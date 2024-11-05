@@ -9,13 +9,15 @@ public class Planeta {
     int distanciaDelSol=0;
     TipoPlaneta tipoPlaneta;
     boolean observableAVista=false;
+    double periodoOrbital=0;
+    double periodoRotacion=0;
 
     public enum TipoPlaneta{
         GASEOSO,
         TERRESTRE,
         ENANO
     }
-    Planeta(String nombre, int cantidadSatelites, double masa, double volumen, int diametro, int distanciaDelSol, TipoPlaneta tipoPlaneta, boolean observableAVista){
+    Planeta(String nombre, int cantidadSatelites, double masa, double volumen, int diametro, int distanciaDelSol, TipoPlaneta tipoPlaneta, boolean observableAVista, double periodoOrbital, double periodoRotacion){
         this.nombre=nombre;
         this.cantidadSatelites=cantidadSatelites;
         this.masa=masa;
@@ -24,6 +26,8 @@ public class Planeta {
         this.distanciaDelSol=distanciaDelSol;
         this.tipoPlaneta=tipoPlaneta;
         this.observableAVista=observableAVista;
+        this.periodoOrbital=periodoOrbital;
+        this.periodoRotacion=periodoRotacion;
     }
     void imprimir(){
         System.out.println("Nombre="+nombre);
@@ -34,7 +38,8 @@ public class Planeta {
         System.out.println("Distancia media al Sol="+distanciaDelSol);
         System.out.println("Tipo de planeta="+tipoPlaneta);
         System.out.println("Observable a simple vista="+observableAVista);
-        System.out.println();
+        System.out.println("Periodo Orbital="+periodoOrbital+"año");
+        System.out.println("Periodo de Rotacion="+periodoRotacion+"dia");
     }
     public double calcularDensidad(){
         if (volumen==0){
@@ -52,11 +57,13 @@ public class Planeta {
     public void mostrarDensidadYExterno(){
         double densidad = calcularDensidad();
         System.out.println("Densidad="+densidad+" kg/km³");
-        System.out.println("Es Planeta exterior"+esPlanetaExterior());
+        System.out.println("Es Planeta exterior="+esPlanetaExterior());
+        System.out.println();
+
     }
     public static void main(String[]args){
-        Planeta p1= new Planeta("Tierra", 1, 5.9736e12, 1.08921e12, 12742, 150000000, TipoPlaneta.TERRESTRE, true);
-        Planeta p2= new Planeta("Jupiter", 1, 1.899e27, 1.4313e15, 139820, 750000000,TipoPlaneta.GASEOSO, true);
+        Planeta p1= new Planeta("Tierra", 1, 5.9736e12, 1.08921e12, 12742, 150000000, TipoPlaneta.TERRESTRE, true, 1,1);
+        Planeta p2= new Planeta("Jupiter", 1, 1.899e27, 1.4313e15, 139820, 750000000,TipoPlaneta.GASEOSO, true,11.86,0.415);
         p1.imprimir();
         p1.mostrarDensidadYExterno();
         p2.imprimir();
